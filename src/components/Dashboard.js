@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar"; // Import the Navbar component
+import Watchlist from "./Watchlist"; // Import the Watchlist component
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const texts = ["Stock", "Invest", "Portfolio", "TrackPORT"];
@@ -34,6 +35,7 @@ const Dashboard = () => {
         isMobileMenuOpen={isMobileMenuOpen}
         navigate={navigate} // Pass navigate prop to Navbar
       />
+
       {/* Portfolio Summary */}
       <section className="container mx-auto px-4 py-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -57,44 +59,11 @@ const Dashboard = () => {
       </section>
 
       {/* Watchlist */}
-      <section className="container mx-auto px-4 py-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">
-          Stock Watchlist
+      <section className="container mx-auto px-4 py-3">
+        <h2 className="text-xl font-bold text-gray-800 mb-2">
+          
         </h2>
-        <div className="bg-white shadow rounded-lg overflow-hidden">
-          <table className="min-w-full table-auto">
-            <thead>
-              <tr className="bg-gray-100 text-left">
-                <th className="px-4 py-2">Stock</th>
-                <th className="px-4 py-2">Price</th>
-                <th className="px-4 py-2">Change</th>
-                <th className="px-4 py-2">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-4 py-2">AAPL</td>
-                <td className="px-4 py-2">$150.32</td>
-                <td className="px-4 py-2 text-green-500">+1.45%</td>
-                <td className="px-4 py-2">
-                  <button className="text-blue-500 hover:underline">
-                    View
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-4 py-2">GOOGL</td>
-                <td className="px-4 py-2">$2,834.52</td>
-                <td className="px-4 py-2 text-red-500">-0.72%</td>
-                <td className="px-4 py-2">
-                  <button className="text-blue-500 hover:underline">
-                    View
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <Watchlist />
       </section>
 
       {/* News */}
