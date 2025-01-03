@@ -29,7 +29,7 @@ const MarketNews = () => {
               Read more
             </a>
           </article>
-          {/* Add more news articles */}
+          
         </div>
       </main>
     </div>

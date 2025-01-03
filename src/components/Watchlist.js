@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import StockForm from "./StockForm"; // Import the StockForm component
+import StockForm from "./StockForm"; 
 
 const Watchlist = () => {
   const [watchlist, setWatchlist] = useState([
     { ticker: "AAPL", name: "Apple Inc.", quantity: 10, buyPrice: 150.32 },
     { ticker: "GOOGL", name: "Alphabet Inc.", quantity: 5, buyPrice: 2800.52 },
   ]);
-  const [stockToEdit, setStockToEdit] = useState(null); // State to handle the stock being edited
+  const [stockToEdit, setStockToEdit] = useState(null); 
 
   // Sample data for stock prices and changes
   const [stockData, setStockData] = useState({
@@ -76,7 +76,7 @@ const Watchlist = () => {
       )
     );
 
-    // Optionally, remove stock data if it's not needed anymore
+    //remove stock data if not needed
     setStockData((prev) => {
       const updatedData = { ...prev };
       delete updatedData[ticker.toUpperCase()];
@@ -85,7 +85,7 @@ const Watchlist = () => {
   };
 
   const editStock = (stock) => {
-    setStockToEdit(stock); // Set the stock to edit
+    setStockToEdit(stock); 
   };
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
+import { useNavigate } from "react-router-dom"; 
 import signupImage from "../assets/signupImage.jpg";
 
 const SignupForm = () => {
@@ -10,8 +10,7 @@ const SignupForm = () => {
     confirmPassword: "",
   });
 
-  const navigate = useNavigate(); // Initialize the navigate function
-
+  const navigate = useNavigate(); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -31,7 +30,7 @@ const SignupForm = () => {
       return;
     }
 
-    // Simulate signup logic
+    
     console.log("Form Data Submitted:", formData);
 
     // Redirect to the Dashboard after successful signup

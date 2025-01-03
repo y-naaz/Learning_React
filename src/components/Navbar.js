@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Logout from "./Logout"; // Import the Logout component
+import Logout from "./Logout"; 
 
 const Navbar = ({ logoText, isTextVisible, setIsMobileMenuOpen, isMobileMenuOpen }) => {
   const navigate = useNavigate();

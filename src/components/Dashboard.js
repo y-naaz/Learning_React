@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar"; // Import the Navbar component
-import Watchlist from "./Watchlist"; // Import the Watchlist component
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import Navbar from "./Navbar"; 
+import Watchlist from "./Watchlist"; 
+import { useNavigate } from "react-router-dom"; 
 
 const texts = ["Stock", "Invest", "Portfolio", "TrackPORT"];
 
@@ -10,19 +10,20 @@ const Dashboard = () => {
   const [logoText, setLogoText] = useState("TrackPORT");
   const [isTextVisible, setIsTextVisible] = useState(true);
   const [index, setIndex] = useState(0);
-  const navigate = useNavigate(); // This is passed to Navbar
-
+  //navigate for the navbar
+  const navigate = useNavigate(); 
+  //logo fade in fade out
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsTextVisible(false); // Fade out current text
+      setIsTextVisible(false); 
       setTimeout(() => {
         setLogoText(texts[index]);
-        setIndex((prevIndex) => (prevIndex + 1) % texts.length); // Cycle to next text
-        setIsTextVisible(true); // Fade in new text
-      }, 1500); // Wait for the fade-out before changing the text
-    }, 3000); // Change text after 2 seconds
+        setIndex((prevIndex) => (prevIndex + 1) % texts.length); 
+        setIsTextVisible(true); 
+      }, 1500); 
+    }, 3000);
 
-    return () => clearTimeout(timer); // Clean up the timer
+    return () => clearTimeout(timer); 
   }, [index]);
 
   return (
@@ -33,7 +34,7 @@ const Dashboard = () => {
         isTextVisible={isTextVisible}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         isMobileMenuOpen={isMobileMenuOpen}
-        navigate={navigate} // Pass navigate prop to Navbar
+        navigate={navigate}
       />
 
       {/* Portfolio Summary */}
@@ -84,7 +85,6 @@ const Dashboard = () => {
               Read more
             </a>
           </article>
-          {/* Add more news articles */}
         </div>
       </section>
     </div>

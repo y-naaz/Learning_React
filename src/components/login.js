@@ -11,7 +11,7 @@ const Login = () => {
     if (email && password) {
       console.log({ email, password });
 
-      // Simulate successful login and navigate to the Dashboard
+      
       navigate("/dashboard");
     } else {
       alert("Please fill in all required fields!");
