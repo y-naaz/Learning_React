@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar"; // Import the Navbar component
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-// Remove Logout import from here since it's used inside Navbar
 
 const texts = ["Stock", "Invest", "Portfolio", "TrackPORT"];
 
