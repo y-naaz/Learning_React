@@ -27,7 +27,7 @@ const Watchlist = () => {
           );
           // Random percentage change
           updatedData[stock].change = parseFloat(
-            (randomFluctuation / updatedData[stock].price * 100).toFixed(2)
+            ((randomFluctuation / updatedData[stock].price) * 100).toFixed(2)
           );
         });
         return updatedData;
@@ -50,13 +50,18 @@ const Watchlist = () => {
       setWatchlist([...watchlist, newStock]);
       setStockData((prev) => ({
         ...prev,
-        [newStock.ticker]: { price: buyPrice, change: 0 }, // Default price and change
+        [newStock.ticker]: { price: newStock.buyPrice, change: 0 }, // Default price and change
       }));
     } else {
       // Update existing stock
-      const updatedWatchlist = watchlist.map(stock =>
+      const updatedWatchlist = watchlist.map((stock) =>
         stock.ticker.toUpperCase() === ticker.toUpperCase()
-          ? { ...stock, name, quantity: parseFloat(quantity), buyPrice: parseFloat(buyPrice) }
+          ? {
+              ...stock,
+              name,
+              quantity: parseFloat(quantity),
+              buyPrice: parseFloat(buyPrice),
+            }
           : stock
       );
       setWatchlist(updatedWatchlist);
@@ -65,9 +70,13 @@ const Watchlist = () => {
   };
 
   const removeStock = (ticker) => {
-    setWatchlist(watchlist.filter(stock => stock.ticker.toUpperCase() !== ticker.toUpperCase()));
-    
-    // Optionally, you might want to remove the stock data if it's not needed anymore
+    setWatchlist(
+      watchlist.filter(
+        (stock) => stock.ticker.toUpperCase() !== ticker.toUpperCase()
+      )
+    );
+
+    // Optionally, remove stock data if it's not needed anymore
     setStockData((prev) => {
       const updatedData = { ...prev };
       delete updatedData[ticker.toUpperCase()];
@@ -111,7 +120,11 @@ const Watchlist = () => {
                   <td className="py-2">{stock.quantity}</td>
                   <td className="py-2">${stock.buyPrice.toFixed(2)}</td>
                   <td className="py-2">
-                    ${stockData[stock.ticker]?.price.toFixed(2) || "N/A"}
+                    $
+                    {stockData[stock.ticker]?.price &&
+                    !isNaN(stockData[stock.ticker]?.price)
+                      ? stockData[stock.ticker].price.toFixed(2)
+                      : "N/A"}
                   </td>
                   <td
                     className={`py-2 ${
@@ -121,7 +134,11 @@ const Watchlist = () => {
                     }`}
                   >
                     {stockData[stock.ticker]?.change > 0 ? "+" : ""}
-                    {stockData[stock.ticker]?.change.toFixed(2)}%
+                    {stockData[stock.ticker]?.change &&
+                    !isNaN(stockData[stock.ticker]?.change)
+                      ? stockData[stock.ticker].change.toFixed(2)
+                      : "N/A"}
+                    %
                   </td>
                   <td className="py-2">
                     <button
