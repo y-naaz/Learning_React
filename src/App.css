@@ -10,3 +10,20 @@
   text-align: center;
 }
 
+/* CSS for fade-in and fade-out effects */
+.logo-text {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: bold;
+  transition: opacity 1s ease-in-out;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+

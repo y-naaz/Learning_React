@@ -1,33 +1,42 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate(); 
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log({ email, password });
+    if (email && password) {
+      console.log({ email, password });
+
+      // Simulate successful login and navigate to the Dashboard
+      navigate("/dashboard");
+    } else {
+      alert("Please fill in all required fields!");
+    }
   };
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-zinc-900 p-4 ">
-      {/* Container with Rounded Edges */}
       <div className="flex w-full max-w-2xl rounded-2xl shadow-lg overflow-hidden bg-white transition-shadow duration-1000 hover:shadow-2xl hover:shadow-cyan-400">
-        {/* Left Side - Image Section */}
-        <div className="hidden lg:block w-1/2 bg-cover bg-center rounded-l-2xl imgdiv" 
-             style={{ backgroundImage: "url('https://img.freepik.com/free-vector/stock-market-illustration-with-bull-bear_1017-9635.jpg?t=st=1735731306~exp=1735734906~hmac=d2610fd1194f49ee9b28a52c551576d3d42636e496c6967661d2fcf6857b2d81&w=740')",             
-              }}>
-          <div className="h-full text-white flex flex-col justify-center items-center  p-7">
-            <h1 className="text-3xl font-bold ">Welcome Back!</h1>
+        <div
+          className="lg:block w-1/2 bg-cover bg-center rounded-l-2xl imgdiv"
+          style={{
+            backgroundImage:
+              "url('https://img.freepik.com/free-vector/stock-market-illustration-with-bull-bear_1017-9635.jpg?t=st=1735731306~exp=1735734906~hmac=d2610fd1194f49ee9b28a52c551576d3d42636e496c6967661d2fcf6857b2d81&w=740')",
+          }}
+        >
+          <div className="h-full text-white flex flex-col justify-center items-center p-7">
+            <h1 className="text-3xl font-bold">Welcome Back!</h1>
             <p className="mt-4 text-center">
-              Manage your stock portfolio efficiently and track market trends in one place. 
-              
+              Manage your stock portfolio efficiently and track market trends
+              in one place.
             </p>
           </div>
         </div>
 
-        {/* Right Side - Login Form */}
         <div className="flex flex-col justify-center items-center w-full lg:w-1/2 p-7">
           <div className="w-full max-w-sm">
             <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">

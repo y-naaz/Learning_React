@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import signupImage from '../assets/signupImage.jpg';
+import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
+import signupImage from "../assets/signupImage.jpg";
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +9,9 @@ const SignupForm = () => {
     password: "",
     confirmPassword: "",
   });
-  
+
+  const navigate = useNavigate(); // Initialize the navigate function
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -27,7 +30,12 @@ const SignupForm = () => {
       alert("Passwords do not match!");
       return;
     }
+
+    // Simulate signup logic
     console.log("Form Data Submitted:", formData);
+
+    // Redirect to the Dashboard after successful signup
+    navigate("/dashboard");
   };
 
   return (
@@ -40,7 +48,10 @@ const SignupForm = () => {
           </h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700" htmlFor="fullName">
+              <label
+                className="block text-sm font-medium text-gray-700"
+                htmlFor="fullName"
+              >
                 Your Name
               </label>
               <input
@@ -55,7 +66,10 @@ const SignupForm = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+              <label
+                className="block text-sm font-medium text-gray-700"
+                htmlFor="email"
+              >
                 Email Address
               </label>
               <input
@@ -70,7 +84,10 @@ const SignupForm = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700" htmlFor="password">
+              <label
+                className="block text-sm font-medium text-gray-700"
+                htmlFor="password"
+              >
                 Create Password
               </label>
               <input
@@ -85,7 +102,10 @@ const SignupForm = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700" htmlFor="confirmPassword">
+              <label
+                className="block text-sm font-medium text-gray-700"
+                htmlFor="confirmPassword"
+              >
                 Confirm Password
               </label>
               <input
@@ -106,8 +126,17 @@ const SignupForm = () => {
                 required
                 className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
-              <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
-                I agree to the <a href="/terms" className="text-blue-600 hover:underline">Terms of Service</a>
+              <label
+                htmlFor="terms"
+                className="ml-2 block text-sm text-gray-900"
+              >
+                I agree to the{" "}
+                <a
+                  href="/terms"
+                  className="text-blue-600 hover:underline"
+                >
+                  Terms of Service
+                </a>
               </label>
             </div>
 
@@ -116,7 +145,13 @@ const SignupForm = () => {
             </button>
 
             <p className="mt-4 text-center text-sm text-gray-600">
-              Already have an account? <a href="/login" className="text-blue-600 hover:underline">Login</a>
+              Already have an account?{" "}
+              <a
+                href="/login"
+                className="text-blue-600 hover:underline"
+              >
+                Login
+              </a>
             </p>
           </form>
         </div>
@@ -124,7 +159,7 @@ const SignupForm = () => {
 
       {/* Right Section: Image */}
       <div
-        className="hidden md:flex w-1/2 items-center justify-center"
+        className="md:flex w-1/2 items-center justify-center"
         style={{
           background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${signupImage})`,
           backgroundSize: "cover",
@@ -132,8 +167,12 @@ const SignupForm = () => {
         }}
       >
         <div className="text-center text-white px-8">
-          <h2 className="text-2xl font-bold mb-4">Discover Insights with Ease</h2>
-          <p className="text-lg">Track market trends and analytics effortlessly.</p>
+          <h2 className="text-2xl font-bold mb-4">
+            Discover Insights with Ease
+          </h2>
+          <p className="text-lg">
+            Track market trends and analytics effortlessly.
+          </p>
         </div>
       </div>
     </div>
