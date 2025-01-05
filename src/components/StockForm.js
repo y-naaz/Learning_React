@@ -38,11 +38,11 @@ const StockForm = ({ onSubmit, initialData }) => {
   };
 
   return (
-    <form 
-      onSubmit={handleSubmit} 
-      className="mb-6 bg-white shadow-lg rounded-lg p-6 transition-shadow duration-500 hover:shadow-2xl hover:shadow-cyan-400"
+    <form
+      onSubmit={handleSubmit}
+      className="mb-6 bg-gray-800 shadow-md rounded-lg p-6 transform transition duration-300 hover:scale-102"
     >
-      <h2 className="text-2xl font-semibold mb-4 text-gray-800 text-center">
+      <h2 className="text-2xl font-semibold mb-4 text-white text-center">
         {initialData ? "Edit Stock" : "Add Stock"}
       </h2>
       <div className="flex flex-col space-y-4">
@@ -52,7 +52,7 @@ const StockForm = ({ onSubmit, initialData }) => {
           placeholder="Stock Name"
           value={formData.name}
           onChange={handleInputChange}
-          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
           required
         />
         <input
@@ -61,7 +61,7 @@ const StockForm = ({ onSubmit, initialData }) => {
           placeholder="Ticker (e.g., AAPL)"
           value={formData.ticker}
           onChange={handleInputChange}
-          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
           required
         />
         <input
@@ -70,7 +70,7 @@ const StockForm = ({ onSubmit, initialData }) => {
           placeholder="Quantity"
           value={formData.quantity}
           onChange={handleInputChange}
-          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
           required
         />
         <input
@@ -79,12 +79,12 @@ const StockForm = ({ onSubmit, initialData }) => {
           placeholder="Buy Price"
           value={formData.buyPrice}
           onChange={handleInputChange}
-          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
           required
         />
         <button
           type="submit"
-          className="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-900 transition duration-200"
+          className="bg-green-500 text-white px-3 py-2 w-32 mx-auto rounded-md hover:bg-green-600 transition duration-200"
         >
           {initialData ? "Update Stock" : "Add Stock"}
         </button>

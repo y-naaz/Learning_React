@@ -89,75 +89,76 @@ const Watchlist = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4 text-gray-800">Stock Watchlist</h1>
+    <div className="p-6 bg-gray-900 min-h-screen">
+      <h1 className="text-2xl font-bold mb-4 text-white">Stock Watchlist</h1>
 
       {/* Stock Form */}
       <StockForm onSubmit={addOrUpdateStock} initialData={stockToEdit} />
 
       {/* Watchlist Display */}
-      <div className="bg-white shadow rounded-lg p-4">
+      <div className="bg-gray-800 text-white shadow rounded-lg p-4">
         {watchlist.length === 0 ? (
-          <p className="text-gray-500">No stocks in the watchlist yet.</p>
+          <p className="text-gray-400">No stocks in the watchlist yet.</p>
         ) : (
-          <table className="w-full text-left">
-            <thead>
-              <tr>
-                <th className="border-b py-2">Ticker</th>
-                <th className="border-b py-2">Name</th>
-                <th className="border-b py-2">Quantity</th>
-                <th className="border-b py-2">Buy Price</th>
-                <th className="border-b py-2">Current Price</th>
-                <th className="border-b py-2">Change</th>
-                <th className="border-b py-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {watchlist.map((stock) => (
-                <tr key={stock.ticker}>
-                  <td className="py-2">{stock.ticker}</td>
-                  <td className="py-2">{stock.name}</td>
-                  <td className="py-2">{stock.quantity}</td>
-                  <td className="py-2">${stock.buyPrice.toFixed(2)}</td>
-                  <td className="py-2">
-                    $
-                    {stockData[stock.ticker]?.price &&
-                    !isNaN(stockData[stock.ticker]?.price)
-                      ? stockData[stock.ticker].price.toFixed(2)
-                      : "N/A"}
-                  </td>
-                  <td
-                    className={`py-2 ${
-                      stockData[stock.ticker]?.change > 0
-                        ? "text-green-600"
-                        : "text-red-600"
-                    }`}
-                  >
-                    {stockData[stock.ticker]?.change > 0 ? "+" : ""}
-                    {stockData[stock.ticker]?.change &&
-                    !isNaN(stockData[stock.ticker]?.change)
-                      ? stockData[stock.ticker].change.toFixed(2)
-                      : "N/A"}
-                    %
-                  </td>
-                  <td className="py-2">
-                    <button
-                      onClick={() => editStock(stock)}
-                      className="text-blue-500 hover:text-blue-700"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => removeStock(stock.ticker)}
-                      className="text-red-500 hover:text-red-700 ml-2"
-                    >
-                      Remove
-                    </button>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-left text-white">
+              <thead>
+                <tr>
+                  <th className="border-b py-2">Ticker</th>
+                  <th className="border-b py-2">Name</th>
+                  <th className="border-b py-2">Quantity</th>
+                  <th className="border-b py-2">Buy Price</th>
+                  <th className="border-b py-2">Current Price</th>
+                  <th className="border-b py-2">Change</th>
+                  <th className="border-b py-2">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {watchlist.map((stock) => (
+                  <tr key={stock.ticker}>
+                    <td className="py-2">{stock.ticker}</td>
+                    <td className="py-2">{stock.name}</td>
+                    <td className="py-2">{stock.quantity}</td>
+                    <td className="py-2">${stock.buyPrice.toFixed(2)}</td>
+                    <td className="py-2">
+                      ${stockData[stock.ticker]?.price &&
+                      !isNaN(stockData[stock.ticker]?.price)
+                        ? stockData[stock.ticker].price.toFixed(2)
+                        : "N/A"}
+                    </td>
+                    <td
+                      className={`py-2 ${
+                        stockData[stock.ticker]?.change > 0
+                          ? "text-green-400"
+                          : "text-red-400"
+                      }`}
+                    >
+                      {stockData[stock.ticker]?.change > 0 ? "+" : ""}
+                      {stockData[stock.ticker]?.change &&
+                      !isNaN(stockData[stock.ticker]?.change)
+                        ? stockData[stock.ticker].change.toFixed(2)
+                        : "N/A"}
+                      %
+                    </td>
+                    <td className="py-2">
+                      <button
+                        onClick={() => editStock(stock)}
+                        className="text-teal-400 hover:text-teal-600"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => removeStock(stock.ticker)}
+                        className="text-red-400 hover:text-red-600 ml-2"
+                      >
+                        Remove
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>
